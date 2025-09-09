@@ -3,7 +3,13 @@ import SubSpinner from "./subSpinner";
 
 const Spinner = () => {
   const [one, setOne] = useState(true);
-
+  setInterval(()=>{
+    if(one){
+      setOne(false)
+    }else{
+      setOne(true)
+    } 
+  },20000)
   return (
     <div className="relative ">
       <button onClick={() => setOne(!one)} className="absolute left-0 top-1/2 py-3 px-5 bg-white shadow-xl rounded-full">
