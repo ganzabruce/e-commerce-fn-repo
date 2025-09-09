@@ -1,9 +1,12 @@
 import './App.css'
+import Nav from './components/nav'
+import Section1 from './components/section1'
 function App() {
   return (
     <>
     <div className="home">
-      <h1>hello world</h1>
+      <Nav />
+      <Section1 />
     </div>
     </>
   )
