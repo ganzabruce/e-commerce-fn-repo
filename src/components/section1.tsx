@@ -1,5 +1,6 @@
 import MiniBar from "./miniBar"
 import DropdownRight from "./dropdownRight"
+import Spinner from "./spinner"
 
 const Section1 = () => {
   return (
@@ -20,8 +21,10 @@ const Section1 = () => {
               <DropdownRight title="Dresses" />
               <DropdownRight title="Shirts" />
             </div>
-            <div className="carousel col-span-8">
-                <h1>images</h1>
+            <div className="carousel col-span-8 bg-green-200 m-5">
+                <h1 className="mx-auto my-auto ">
+                  <Spinner />
+                </h1>
             </div>
           </div>
         </div>

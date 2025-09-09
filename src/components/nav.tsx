@@ -12,10 +12,10 @@ const Nav = () => {
             </div>
             <div className="contacts">
                 <ul className='flex '>
-                    <li className='py-2 px-4 border-1 border-gray-100'>welcome to out store</li>
-                    <li className='py-2 px-4 border-1 border-gray-100'>blog</li>
-                    <li className='py-2 px-4 border-1 border-gray-100'>faq</li>
-                    <li className='py-2 px-4 border-1 border-gray-100'>contact us</li>
+                    <li className='py-2 px-4 border-1 border-y-0 border-gray-100'>welcome to out store</li>
+                    <li className='py-2 px-4 border-1 border-y-0 border-gray-100'>blog</li>
+                    <li className='py-2 px-4 border-1 border-y-0 border-gray-100'>faq</li>
+                    <li className='py-2 px-4 border-1 border-y-0 border-gray-100'>contact us</li>
                 </ul>
             </div>
         </div>
