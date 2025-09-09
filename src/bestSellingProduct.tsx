@@ -12,7 +12,6 @@ interface Product {
   image: string;
   backgroundColor?: string;
 }
-
 const products: Product[] = [
   {
     id: 1,
@@ -73,7 +72,7 @@ const products: Product[] = [
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   return (
-    <div className="bg-white border border-gray-100 rounded-lg hover:shadow-lg hover:border-gray-200 transition-all duration-300 group overflow-hidden">
+    <div className="bg-white border border-gray-100 rounded-lg hover:shadow-lg hover:border-gray-200 transition-all duration-300  group overflow-hidden">
       <div className="relative">
         {/* Discount Badge */}
         {product.discount && (
@@ -142,8 +141,8 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
 const BestSellingProducts: React.FC = () => {
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="bg-gray-50  min-h-screen py-12">
+      <div className="max-w-7xl p-10 bg-white mx-auto px-6">
         {/* Header */}
         <div className="flex justify-between items-start mb-10">
           <div>
@@ -154,9 +153,7 @@ const BestSellingProducts: React.FC = () => {
             VIEW ALL
           </button>
         </div>
-        
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
