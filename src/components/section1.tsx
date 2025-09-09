@@ -24,6 +24,7 @@ const Section1 = () => {
             <div className="carousel col-span-8 bg-green-200 m-5">
                 <h1 className="mx-auto my-auto ">
                   <Spinner />
+                  
                 </h1>
             </div>
           </div>
