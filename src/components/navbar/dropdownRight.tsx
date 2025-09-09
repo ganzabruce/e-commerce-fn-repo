@@ -1,7 +1,9 @@
-interface dropDownProps{
-  title: string
+interface DropDownProps {
+  title: string;
+  name: string;
+  subcategories: string[];
 }
-const DropdownRight = ({title}:dropDownProps) => {
+const DropdownRight = ({title,name,subcategories}:DropDownProps) => {
   return (
     <div className="dropdown-right dropdown-center dropdown-hover">
         <div className="dropdown dropdown-hover">
@@ -10,8 +12,11 @@ const DropdownRight = ({title}:dropDownProps) => {
         <i className="fa-solid fa-arrow-right"></i>
     </div>
     <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-        <li><a>Item 1</a></li>
-        <li><a>Item 2</a></li>
+        {subcategories.map((sub) => (
+          <li key={sub}>
+            <a>{sub}</a>
+          </li>
+        ))}
     </ul>
     </div>
     </div>

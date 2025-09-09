@@ -1,5 +1,5 @@
 
-import DropDown from "../dropDown"
+import DropDown from "./dropDown"
 const MiniBar = () => {
   return (
     <div className="grid grid-cols-7">
