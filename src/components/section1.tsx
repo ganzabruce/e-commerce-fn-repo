@@ -1,6 +1,6 @@
-import MiniBar from "./miniBar"
+import MiniBar from "./navbar/miniBar"
 import DropdownRight from "./dropdownRight"
-import Spinner from "./spinner"
+import Spinner from "./spinner/spinner"
 
 const Section1 = () => {
   return (
