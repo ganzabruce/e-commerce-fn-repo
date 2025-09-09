@@ -72,7 +72,6 @@ const Section1 = () => {
           </div>
         </div>
         <div className="banners">
-            <Banners />
         </div>
             
     </div>

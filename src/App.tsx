@@ -1,14 +1,36 @@
 import './App.css'
+import BestSellingProducts from './bestSellingProduct'
 import Footer from './components/footer'
 import Nav from './components/navbar/nav'
 import Section1 from './components/section1'
+import FeaturedProductsSection from './FeaturedProduct'
+import ProductGrid from './productGrid'
+import ProductShowcase from './productShowcase'
 function App() {
   return (
     <>
     <div className="home">
-      <Nav />
-      <Section1 />
-      <Footer />
+      <nav>
+        <Nav />
+      </nav>
+      <section>
+        <Section1 />
+      </section>
+      <section>
+        <ProductShowcase />
+      </section>
+      <section>
+        <ProductGrid />
+      </section>
+      <section >
+        <BestSellingProducts />
+      </section>
+      <section>
+        <FeaturedProductsSection />
+      </section>
+      <footer>
+        <Footer />
+      </footer>
     </div>
     </>
   )
