@@ -1,5 +1,5 @@
 import './App.css'
-import Nav from './components/nav'
+import Nav from './components/navbar/nav'
 import Section1 from './components/section1'
 function App() {
   return (

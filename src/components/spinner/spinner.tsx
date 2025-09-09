@@ -9,6 +9,7 @@ const Spinner = () => {
     }else{
       setOne(true)
     } 
+    
   },20000)
   return (
     <div className="relative ">
