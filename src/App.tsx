@@ -1,43 +1,28 @@
 import './App.css'
-import BestSellingProducts from './bestSellingProduct'
-import Footer from './components/footer'
+
+import { BrowserRouter as Router , Routes, Route, Navigate  } from 'react-router-dom'
+
+import AdminDashboard from './components/dashboard/AdminDashboard'
+import LandingPage from './landingPage'
 import Nav from './components/navbar/nav'
-import { BrowserRouter as Router , Routes, Route  } from 'react-router-dom'
-import Section1 from './components/section1'
-import FeaturedProductsSection from './FeaturedProduct'
-import ProductGrid from './productGrid'
-import ProductShowcase from './productShowcase'
+
+import { useAdminContext } from './hooks/useAdminAuth'
+import { useUserContext } from './hooks/useUserContext'
 function App() {
+  const { admin } = useAdminContext();
+  // const { user } = useUserContext();
+
   return (
     <>
     <Router>
-      <Routes>
-        <Route path="/admin" element={<A />} />
-      </Routes>
-    </Router>
-    <div className="home">
       <nav>
         <Nav />
       </nav>
-      <section>
-        <Section1 />
-      </section>
-      <section>
-        <ProductShowcase />
-      </section>
-      <section>
-        <ProductGrid />
-      </section>
-      <section >
-        <BestSellingProducts />
-      </section>
-      <section>
-        <FeaturedProductsSection />
-      </section>
-      <footer>
-        <Footer />
-      </footer>
-    </div>
+      <Routes>
+        <Route path="/" element={admin ? <Navigate to="/admin/dashboard" />:<LandingPage />} />
+        <Route path="/admin/dashboard" element={admin ? <AdminDashboard />: <Navigate to="/" />} />
+      </Routes>
+    </Router>
     </>
   )
 }
