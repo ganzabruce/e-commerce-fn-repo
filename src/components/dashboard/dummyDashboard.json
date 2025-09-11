@@ -1,0 +1,67 @@
+{
+  "overview": {
+    "totalRevenue": 45600,
+    "totalOrders": 890,
+    "totalUsers": 3400,
+    "totalProducts": 1250
+  },
+  "recentOrders": [
+    {
+      "_id": "64f0a1b2345c67890d123456",
+      "customer": "john doe",
+      "totalPrice": 900,
+      "createdAt": "2025-09-01T12:34:56.789Z"
+    },
+    {
+      "_id": "64f0a1b2345c67890d123457",
+      "customer": "frank iva",
+      "totalPrice": 400,
+      "createdAt": "2025-09-03T09:20:15.123Z"
+    },
+    {
+      "_id": "64f0a1b2345c67890d123458",
+      "customer": "anthony baker",
+      "totalPrice": 200,
+      "createdAt": "2025-09-05T14:45:00.456Z"
+    },
+    {
+      "_id": "64f0a1b2345c67890d123459",
+      "customer": "sarah connor",
+      "totalPrice": 650,
+      "createdAt": "2025-09-06T16:10:30.789Z"
+    },
+    {
+      "_id": "64f0a1b2345c67890d123460",
+      "customer": "mike johnson",
+      "totalPrice": 320,
+      "createdAt": "2025-09-07T11:50:45.987Z"
+    }
+  ],
+  "topCustomers": [
+    {
+      "name": "john doe",
+      "spending": 15870,
+      "orders": 490
+    },
+    {
+      "name": "frank iva",
+      "spending": 21502,
+      "orders": 360
+    },
+    {
+      "name": "anthony baker",
+      "spending": 19680,
+      "orders": 200
+    },
+    {
+      "name": "sarah connor",
+      "spending": 12340,
+      "orders": 180
+    },
+    {
+      "name": "mike johnson",
+      "spending": 8950,
+      "orders": 150
+    }
+  ]
+}
