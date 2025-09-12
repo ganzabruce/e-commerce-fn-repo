@@ -12,6 +12,10 @@ interface Product {
   image: string;
   backgroundColor?: string;
 }
+
+
+
+
 const products: Product[] = [
   {
     id: 1,
