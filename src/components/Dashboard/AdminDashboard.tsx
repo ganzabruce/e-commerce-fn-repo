@@ -3,9 +3,9 @@ import {
   ShoppingCart, Users, Package, LayoutDashboard
 } from 'lucide-react';
 import DashBoardContent from './dashBoardContent';
-import Orders from './orders';
-import Products from './products';
-import Userss from './users';
+import Orders from './orders/orders';
+import ProductsTable from './products/products';
+import Userss from './users/users';
 
 
 const AdminDashboard: React.FC = () => {
@@ -71,7 +71,7 @@ const AdminDashboard: React.FC = () => {
       {/* Main Content */}
       <main className="flex-1 p-6">
         {sidebar === "dashboard" && <DashBoardContent />}
-        {sidebar === "products" && <Products />}
+        {sidebar === "products" && <ProductsTable />}
         {sidebar === "orders" && <Orders />}
         {sidebar === "users" && <Userss />}
       </main>
