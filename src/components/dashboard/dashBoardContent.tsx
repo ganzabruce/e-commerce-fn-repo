@@ -7,9 +7,35 @@ import {
   ShoppingCart, Users, Package, DollarSign, TrendingUp,
   Clock, CheckCircle, XCircle,
 } from 'lucide-react';
+import axios from 'axios';
 
 const DashBoardContent = () => {
   // Mock data - replace with API calls later
+  const [orders,setOrders] = useState()
+  const [products,setProducts] = useState()
+  const [users,setUsers] = useState()
+
+  const getdata = async() =>{
+    try {
+      const prodct:any = await axios.get("http://localhost:3001/api/routes/products")
+      const ordr:any =await  axios.get("http://localhost:3001/api/routes/orders")
+      const usr =await  axios.get("http://localhost:3001/api/routes/users")
+      console.log(prodct.data,ordr.data,usr.data)
+      setUsers(usr.data.users)
+      setProducts(prodct.data.products)
+      setOrders(ordr.data.orders)
+    } catch (error) {
+      console.log(error)
+    }
+  } 
+  useEffect(()=>{
+    getdata()
+  },[])
+  
+  
+
+
+
   const mockData = {
     overview: {
       totalProducts: 1250,
@@ -178,28 +204,28 @@ const DashBoardContent = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <StatCard
+        {/* <StatCard
           title="Total Revenue"
           value={`$${data.overview.totalRevenue.toLocaleString()}`}
           icon={<DollarSign className="h-6 w-6 text-green-600" />}
           trend={data.overview.monthlyGrowth}
           color="#10B981"
-        />
+        /> */}
         <StatCard
           title="Total Orders"
-          value={data.overview.totalOrders.toLocaleString()}
+          value={orders?.length}
           icon={<ShoppingCart className="h-6 w-6 text-blue-600" />}
           color="#3B82F6"
         />
         <StatCard
           title="Total Users"
-          value={data.overview.totalUsers.toLocaleString()}
+          value={users?.length}
           icon={<Users className="h-6 w-6 text-purple-600" />}
           color="#8B5CF6"
         />
         <StatCard
           title="Total Products"
-          value={data.overview.totalProducts.toLocaleString()}
+          value={products?.length}
           icon={<Package className="h-6 w-6 text-orange-600" />}
           color="#F59E0B"
         />
