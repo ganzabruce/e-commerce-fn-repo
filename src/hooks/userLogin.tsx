@@ -9,7 +9,7 @@ export const menteeLogin = ()=>{
         setError(null)
         setIsLoading(true)
         try {
-            const response = await fetch('http://localhost:3003/api/user/login',{
+            const response = await fetch('https://e-commerce-bn-project-a9qh.onrender.com/api/user/login',{
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json"

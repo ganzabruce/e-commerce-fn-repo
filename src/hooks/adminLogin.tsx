@@ -11,7 +11,7 @@ export const mentorLogin = () =>{
         setIsLoading(true)
         setError(null)
         try {
-            const response = await fetch('http://localhost:3003/api/mentor/login',{
+            const response = await fetch('https://e-commerce-bn-project-a9qh.onrender.com/api/mentor/login',{
                 method: "POST",
                 headers: {
                     "Content-Type":"application/json"
