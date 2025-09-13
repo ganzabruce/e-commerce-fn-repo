@@ -2,20 +2,31 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const Userss = () => {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+// Define user type
+interface User {
+  _id: string;
+  username: string;
+  email: string;
+  status?: 'active' | 'inactive' | 'suspended' | 'pending';
+  createdAt?: string;
+  updatedAt?: string;
+}
 
-  const fetchUsers = async () => {
+const Userss: React.FC = () => {
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchUsers = async (): Promise<void> => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:3001/api/routes/users');
-      console.log(response.data)
-      setUsers(response.data.users || response.data);
+      const response = await axios.get<{ users: User[] }>('http://localhost:3001/api/routes/users');
+      console.log(response.data);
 
-    } catch (error) {
-      console.error('Error fetching users:', error);
+      // Some APIs return {users: [...]} others return just an array
+      setUsers(response.data.users || (response.data as unknown as User[]));
+    } catch (err) {
+      console.error('Error fetching users:', err);
       setError('Failed to load users. Please try again later.');
     } finally {
       setLoading(false);
@@ -26,17 +37,10 @@ const Userss = () => {
     fetchUsers();
   }, []);
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    });
-  };
+  
 
-  const getStatusColor = (status) => {
-    const colors = {
+  const getStatusColor = (status: string): string => {
+    const colors: Record<string, string> = {
       active: 'bg-green-100 text-green-800',
       inactive: 'bg-gray-100 text-gray-800',
       suspended: 'bg-red-100 text-red-800',
@@ -101,21 +105,11 @@ const Userss = () => {
         <table className="min-w-full bg-white border border-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                User ID
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Username
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Email
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Status
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Actions
-              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User ID</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Username</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -127,22 +121,18 @@ const Userss = () => {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm font-medium text-gray-900">{user.username}</div>
                 </td>
-                <Link to={`/user/info/${user._id}`}>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-600">{user.email}</div>
+                  <Link to={`/user/info/${user._id}`} className="text-blue-600 hover:underline">
+                    {user.email}
+                  </Link>
                 </td>
-                </Link>
-
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(user.status || 'active')}`}>
                     {user.status || 'active'}
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  
-                  <button className="text-red-600 hover:text-red-900">
-                    Delete
-                  </button>
+                  <button className="text-red-600 hover:text-red-900">Delete</button>
                 </td>
               </tr>
             ))}
@@ -163,37 +153,28 @@ const Userss = () => {
                 {user.status || 'active'}
               </span>
             </div>
-            
             <div className="space-y-2">
               <div className="flex items-center">
-                <svg className="w-4 h-4 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-4 h-4 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                 </svg>
                 <span className="text-sm text-gray-600">{user.email}</span>
               </div>
-              
-              
             </div>
-            
             <div className="flex justify-between items-center mt-4 pt-3 border-t border-gray-200">
-              <button className="text-blue-600 hover:text-blue-900 text-sm font-medium">
-                <Link to={`/user/info/${user._id}`}>
+              <Link to={`/user/info/${user._id}`} className="text-blue-600 hover:text-blue-900 text-sm font-medium">
                 View Details
-                </Link>
+              </Link>
+              <button className="p-1 text-red-600 hover:bg-red-100 rounded">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
               </button>
-              <div className="flex space-x-2">
-                
-                <button className="p-1 text-red-600 hover:bg-red-100 rounded">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                  </svg>
-                </button>
-              </div>
             </div>
           </div>
         ))}
       </div>
-      
+
       <div className="mt-6 text-sm text-gray-600 text-center lg:text-left">
         Total Users: {users.length}
       </div>

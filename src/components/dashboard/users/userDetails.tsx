@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 
 interface UserProps {
@@ -194,7 +194,7 @@ const UserDetails = () => {
             <div className="flex space-x-4 pt-4">
               <button 
                 className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
-                onClick={() => setShowEditForm(true)}
+                // onClick={() => setShowEditForm(true)}
               >
                 <i className="fa-solid fa-pen-to-square mr-2"></i> Edit User
               </button>

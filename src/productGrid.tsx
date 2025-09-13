@@ -1,4 +1,3 @@
-import React from 'react';
 import { Heart, ShoppingCart, Search } from 'lucide-react';
 
 interface Product {
@@ -80,79 +79,6 @@ const ProductGrid = () => {
       image: "https://kapee.presslayouts.com/wp-content/uploads/2020/07/Apple-Watch-Series-5-Black-Milanese-2-300x350.jpg"
     }
   ];
-
-  const ProductImage: React.FC<{ type: string }> = ({ type }) => {
-    switch (type) {
-      case 'phone':
-        return (
-          <div className="w-20 h-28 bg-gradient-to-b from-yellow-100 to-yellow-200 rounded-xl relative mx-auto">
-            <div className="absolute inset-2 bg-black rounded-lg">
-              <div className="w-4 h-4 bg-gray-300 rounded-full mx-auto mt-2"></div>
-            </div>
-          </div>
-        );
-      case 'watch':
-        return (
-          <div className="w-20 h-20 relative mx-auto">
-            <div className="w-16 h-20 bg-gray-200 rounded-xl mx-auto">
-              <div className="absolute inset-1 bg-black rounded-lg">
-                <div className="w-2 h-2 bg-white rounded-full mx-auto mt-2"></div>
-              </div>
-            </div>
-          </div>
-        );
-      case 'speaker':
-        return (
-          <div className="w-16 h-24 bg-blue-600 rounded-full mx-auto relative">
-            <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-orange-500 rounded-full"></div>
-          </div>
-        );
-      case 'headphones':
-        return (
-          <div className="w-20 h-16 relative mx-auto">
-            <div className="w-16 h-6 bg-white rounded-full mx-auto border-4 border-yellow-200"></div>
-            <div className="absolute top-0 left-1 w-4 h-4 bg-yellow-200 rounded-full"></div>
-            <div className="absolute top-0 right-1 w-4 h-4 bg-yellow-200 rounded-full"></div>
-          </div>
-        );
-      case 'airpods':
-        return (
-          <div className="w-20 h-16 mx-auto flex justify-center items-center space-x-2">
-            <div className="w-6 h-10 bg-white rounded-full relative">
-              <div className="w-2 h-4 bg-white rounded-full absolute -bottom-2 left-1/2 transform -translate-x-1/2"></div>
-            </div>
-            <div className="w-6 h-10 bg-white rounded-full relative">
-              <div className="w-2 h-4 bg-white rounded-full absolute -bottom-2 left-1/2 transform -translate-x-1/2"></div>
-            </div>
-          </div>
-        );
-      case 'samsung':
-        return (
-          <div className="w-16 h-28 bg-gradient-to-b from-blue-400 to-blue-600 rounded-xl mx-auto">
-            <div className="absolute inset-x-2 top-4 bottom-4 bg-blue-300 rounded-lg"></div>
-          </div>
-        );
-      case 'camera':
-        return (
-          <div className="w-16 h-12 bg-white rounded-lg mx-auto relative">
-            <div className="w-8 h-8 bg-gray-300 rounded-full mx-auto mt-2"></div>
-            <div className="w-4 h-4 bg-gray-600 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-          </div>
-        );
-      case 'watch-black':
-        return (
-          <div className="w-20 h-20 relative mx-auto">
-            <div className="w-16 h-20 bg-gray-800 rounded-xl mx-auto">
-              <div className="absolute inset-1 bg-black rounded-lg">
-                <div className="w-2 h-2 bg-white rounded-full mx-auto mt-2"></div>
-              </div>
-            </div>
-          </div>
-        );
-      default:
-        return <div className="w-20 h-20 bg-gray-200 rounded mx-auto"></div>;
-    }
-  };
 
   return (
     <div className="max-w-7xl mx-auto p-6">

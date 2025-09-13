@@ -1,4 +1,5 @@
-import  { createContext, useEffect, useReducer, ReactNode, Dispatch } from "react";
+import  { createContext, useEffect, useReducer } from "react";
+import type{ReactNode, Dispatch} from "react";
 
 export type User = {
   id: string;
