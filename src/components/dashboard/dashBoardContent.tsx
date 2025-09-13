@@ -10,9 +10,9 @@ import {
 } from 'lucide-react';
 
 const DashBoardContent = () => {
-  const [orders, setOrders] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [_orders, setOrders] = useState([]);
+  const [_products, setProducts] = useState([]);
+  const [_users, setUsers] = useState([]);
 
   const getdata = async() =>{
     try {
