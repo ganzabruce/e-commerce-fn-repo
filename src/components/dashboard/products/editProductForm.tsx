@@ -50,7 +50,7 @@ const EditProductForm: React.FC<EditProductFormProps> = ({ id }) => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get<{ product: ProductProps }>(
-          `http://localhost:3001/api/routes/products/${id}`
+          `https://e-commerce-bn-project-a9qh.onrender.com/api/routes/products/${id}`
         );
         setFormData(response.data.product);
       } catch (error) {
@@ -79,7 +79,7 @@ const EditProductForm: React.FC<EditProductFormProps> = ({ id }) => {
 
     try {
       const response = await axios.put(
-        `http://localhost:3001/api/routes/products/${id}`,
+        `https://e-commerce-bn-project-a9qh.onrender.com/api/routes/products/${id}`,
         formData
       );
       if (response.status === 200) {

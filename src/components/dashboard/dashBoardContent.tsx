@@ -16,9 +16,9 @@ const DashBoardContent = () => {
 
   const getdata = async() =>{
     try {
-      const prodct:any = await axios.get("http://localhost:3001/api/routes/products")
-      const ordr:any =await  axios.get("http://localhost:3001/api/routes/orders")
-      const usr =await  axios.get("http://localhost:3001/api/routes/users")
+      const prodct:any = await axios.get("https://e-commerce-bn-project-a9qh.onrender.com/api/routes/products")
+      const ordr:any =await  axios.get("https://e-commerce-bn-project-a9qh.onrender.com/api/routes/orders")
+      const usr =await  axios.get("https://e-commerce-bn-project-a9qh.onrender.com/api/routes/users")
       console.log(prodct.data,ordr.data,usr.data)
       setUsers(usr.data.users)
       setProducts(prodct.data.products)

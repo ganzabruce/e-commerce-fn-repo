@@ -18,7 +18,7 @@ const UserDetails = () => {
   const handleDelete = async () => {
     setLoading(true);
     try {
-      const response = await axios.delete(`http://localhost:3001/api/routes/user/${id}`);
+      const response = await axios.delete(`https://e-commerce-bn-project-a9qh.onrender.com/api/routes/user/${id}`);
       if (response.status === 200) {
         setMessage('User deleted successfully!');
         setTimeout(() => navigate("/users"), 2000);
@@ -37,7 +37,7 @@ const UserDetails = () => {
     try {
       setLoading(true);
       console.log(id);
-      const response = await axios.get(`http://localhost:3001/api/routes/user/${id}`);
+      const response = await axios.get(`https://e-commerce-bn-project-a9qh.onrender.com/api/routes/user/${id}`);
       console.log("user :",response.data.user);
       setUser(response.data.user);
     } catch (error) {

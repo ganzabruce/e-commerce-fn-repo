@@ -27,7 +27,7 @@ const ProductDetails = () => {
     try {
       setLoading(true);
       const response = await axios.get<{ product: Product }>(
-        `http://localhost:3001/api/routes/products/${id}`
+        `https://e-commerce-bn-project-a9qh.onrender.com/api/routes/products/${id}`
       );
       setProduct(response.data.product);
     } catch (err) {
@@ -42,7 +42,7 @@ const ProductDetails = () => {
     try {
       setLoading(true);
       const response = await axios.delete(
-        `http://localhost:3001/api/routes/products/${id}`
+        `https://e-commerce-bn-project-a9qh.onrender.com/api/routes/products/${id}`
       );
       if (response.status === 200) {
         setMessage('Product deleted successfully!');

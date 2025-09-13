@@ -58,7 +58,7 @@ const CreateProductForm: React.FC = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3001/api/routes/products`,
+        `https://e-commerce-bn-project-a9qh.onrender.com/api/routes/products`,
         formData
       );
       if (response.status === 201 || response.status === 200) {

@@ -17,7 +17,7 @@ interface Product {
   _id: string;
   name: string;
   price: number;
-  
+
   description?: string;
   imageUrl?: string;
   category?: string;
@@ -35,7 +35,7 @@ const Orders = () => {
     try {
       setLoading(true);
       const response = await axios.get<{ orders: Order[] } | Order[]>(
-        "http://localhost:3001/api/routes/orders"
+        "https://e-commerce-bn-project-a9qh.onrender.com/api/routes/orders"
       );
 
       const ordersData = Array.isArray(response.data)
@@ -66,7 +66,7 @@ const Orders = () => {
 
       const productsResponse = await axios.post<
         { products: Product[] } | Product[]
-      >("http://localhost:3001/api/routes/products/batch", {
+      >("https://e-commerce-bn-project-a9qh.onrender.com/api/routes/products/batch", {
         productIds,
       });
 

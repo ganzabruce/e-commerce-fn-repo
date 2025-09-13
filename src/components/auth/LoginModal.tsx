@@ -13,7 +13,7 @@ const LoginForm = ()=>{
     if (e) e.preventDefault();
     setIsLoading(true)
     setErrors(null)
-    const response = await axios.post("http://localhost:3001/api/auth/login",{email,password})
+    const response = await axios.post("https://e-commerce-bn-project-a9qh.onrender.com/api/auth/login",{email,password})
     try {
       console.log("logged in user:", response.data);
       dispatch({ type: "login", payload: response.data.data });
@@ -74,7 +74,7 @@ const SignupForm = () =>{
     if (e) e.preventDefault();
     setIsLoading(true)
     setErrors(null)
-    const response = await axios.post("http://localhost:3001/api/auth/signup",{username,email,password})
+    const response = await axios.post("https://e-commerce-bn-project-a9qh.onrender.com/api/auth/signup",{username,email,password})
     try {
       console.log("logged in user:", response.data);
       dispatch({ type: "login", payload: response.data.data });

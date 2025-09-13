@@ -20,7 +20,7 @@ const Userss: React.FC = () => {
   const fetchUsers = async (): Promise<void> => {
     try {
       setLoading(true);
-      const response = await axios.get<{ users: User[] }>('http://localhost:3001/api/routes/users');
+      const response = await axios.get<{ users: User[] }>('https://e-commerce-bn-project-a9qh.onrender.com/api/routes/users');
       console.log(response.data);
 
       // Some APIs return {users: [...]} others return just an array

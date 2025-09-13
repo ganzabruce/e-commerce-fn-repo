@@ -22,7 +22,7 @@ const ProductsTable = () => {
   const fetchProduct = async () => {
     try {
       const response = await axios.get<{ products: Product[] }>(
-        'http://localhost:3001/api/routes/products'
+        'https://e-commerce-bn-project-a9qh.onrender.com/api/routes/products'
       );
       setDummyProducts(response.data.products);
     } catch (error) {
