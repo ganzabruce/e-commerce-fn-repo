@@ -13,6 +13,7 @@ interface Product {
   quantity: number;
 }
 
+
 const ProductDetails = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
