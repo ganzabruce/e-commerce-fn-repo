@@ -14,9 +14,9 @@ type Product = {
 };
 
 const ProductsTable = () => {
-  // products → array of Product
+
   const [dummyProducts, setDummyProducts] = useState<Product[]>([]);
-  // showAdd → boolean (default false)
+
   const [showAdd, setAdd] = useState<boolean>(false);
 
   const fetchProduct = async () => {

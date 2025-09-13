@@ -10,9 +10,9 @@ import {
 } from 'lucide-react';
 
 const DashBoardContent = () => {
-  const [_orders, setOrders] = useState([]);
-  const [_products, setProducts] = useState([]);
-  const [_users, setUsers] = useState([]);
+  const [orders, setOrders] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const getdata = async() =>{
     try {
@@ -206,19 +206,19 @@ const DashBoardContent = () => {
         
         <StatCard
           title="Total Orders"
-          value={data.overview.totalOrders.toLocaleString()}
+          value={orders.length}
           icon={<ShoppingCart className="h-6 w-6 text-blue-600" />}
           color="#3B82F6"
         />
         <StatCard
           title="Total Users"
-          value={data.overview.totalUsers.toLocaleString()}
+          value={users.length}
           icon={<Users className="h-6 w-6 text-purple-600" />}
           color="#8B5CF6"
         />
         <StatCard
           title="Total Products"
-          value={data.overview.totalProducts.toLocaleString()}
+          value={products.length}
           icon={<Package className="h-6 w-6 text-orange-600" />}
           color="#F59E0B"
         />
