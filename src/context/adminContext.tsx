@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useReducer, ReactNode, Dispatch } from "react";
-
+import  { createContext, useEffect, useReducer } from "react";
+import type{ Dispatch, ReactNode } from "react";
 export type Admin = {
   id: string;
   name: string;

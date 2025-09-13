@@ -1,9 +1,8 @@
 interface DropDownProps {
   title: string;
-  name: string;
   subcategories: string[];
 }
-const DropdownRight = ({title,name,subcategories}:DropDownProps) => {
+const DropdownRight = ({title,subcategories}:DropDownProps) => {
   return (
     <div className="dropdown-right dropdown-center dropdown-hover">
         <div className="dropdown dropdown-hover">
