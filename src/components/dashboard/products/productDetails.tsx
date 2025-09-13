@@ -1,6 +1,6 @@
 import axios from 'axios';
-import  { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import EditProductForm from './editProductForm';
 
 interface Product {
@@ -14,31 +14,31 @@ interface Product {
 }
 
 const ProductDetails = () => {
-  const [showEditForm, _setShowEditForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
   const [product, setProduct] = useState<Product | null>(null); // ✅ allow null before fetch
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null); // ✅ error is a string or null
-  const [message, _setMessage] = useState<string | null>(null); // ✅ message is a string or null
-
+  const [message, setMessage] = useState<string | null>(null); // ✅ message is a string or null
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>(); // ✅ ensure id is typed
 
-  // const handleDelete = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await axios.delete(`http://localhost:3001/api/routes/products/${id}`);
-  //     if (response.status === 200) {
-  //       setMessage('Product deleted successfully!');
-  //       setTimeout(() => navigate("/"), 3000); // ✅ use setTimeout, not setInterval
-  //     } else {
-  //       setMessage('Failed to delete product. Please try again.');
-  //     }
-  //   } catch (error: any) {
-  //     console.error('Error deleting product:', error);
-  //     setMessage('An error occurred while deleting the product.');
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  const handleDelete = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.delete(`http://localhost:3001/api/routes/products/${id}`);
+      if (response.status === 200) {
+        setMessage('Product deleted successfully!');
+        setTimeout(() => navigate("/"), 3000); // ✅ use setTimeout, not setInterval
+      } else {
+        setMessage('Failed to delete product. Please try again.');
+      }
+    } catch (error: any) {
+      console.error('Error deleting product:', error);
+      setMessage('An error occurred while deleting the product.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const fetchProduct = async () => {
     try {
@@ -59,11 +59,11 @@ const ProductDetails = () => {
     fetchProduct();
   }, [id]);
 
-  // const getStockStatus = (quantity: number) => {
-  //   if (quantity === 0) return { text: 'Out of Stock', color: 'text-red-600', bgColor: 'bg-red-100' };
-  //   if (quantity <= 10) return { text: 'Low Stock', color: 'text-orange-600', bgColor: 'bg-orange-100' };
-  //   return { text: 'In Stock', color: 'text-green-600', bgColor: 'bg-green-100' };
-  // };
+  const getStockStatus = (quantity: number) => {
+    if (quantity === 0) return { text: 'Out of Stock', color: 'text-red-600', bgColor: 'bg-red-100' };
+    if (quantity <= 10) return { text: 'Low Stock', color: 'text-orange-600', bgColor: 'bg-orange-100' };
+    return { text: 'In Stock', color: 'text-green-600', bgColor: 'bg-green-100' };
+  };
 
   if (loading) {
     return (
@@ -107,7 +107,7 @@ const ProductDetails = () => {
     );
   }
 
-  // const stockStatus = getStockStatus(product.quantity);
+  const stockStatus = getStockStatus(product.quantity);
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">

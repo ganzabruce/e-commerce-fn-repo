@@ -17,7 +17,7 @@ const AdminLoginPages = () => {
       setIsLoading(true);
       setErrors(null);
       const response = await axios.post(
-        "https://e-commerce-bn-project-a9qh.onrender.com/api/auth/admin/login",
+        "http://localhost:3001/api/auth/admin/login",
         { email, password }
       );
       console.log("logged in admin:", response.data);

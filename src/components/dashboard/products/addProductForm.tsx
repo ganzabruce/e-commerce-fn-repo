@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 interface FormData {
   name: string;
@@ -10,7 +12,7 @@ interface FormData {
 }
 
 const AddProductForm = () => {
-  const [_formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     price: 0,
     description: '',
@@ -19,58 +21,31 @@ const AddProductForm = () => {
     quantity: 0,
   });
 
-  const [_isSubmitting, _setIsSubmitting] = useState(false);
-  const [_message, _setMessage] = useState<{ type: string; text: string }>({ type: '', text: '' });
-  // const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState<{ type: string; text: string }>({ type: '', text: '' });
+  const navigate = useNavigate();
 
-  // const categories: string[] = [
-  //   'Electronics',
-  //   'Footwear',
-  //   'Clothing',
-  //   'Home & Kitchen',
-  //   'Books',
-  //   'Sports & Fitness',
-  //   'Food & Beverages',
-  //   'Furniture',
-  //   'Games & Toys',
-  //   'Health & Wellness',
-  //   'Home & Garden',
-  //   'Accessories'
-  // ];
+  // ✅ put try/catch inside handleSubmit
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setMessage({ type: '', text: '' });
 
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-  //   const { name, value } = e.target;
-  //   setFormData(prev => ({
-  //     ...prev,
-  //     [name]: name === 'price' || name === 'quantity' ? Number(value) : value,
-  //   }));
-  // };
-
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setIsSubmitting(true);
-  //   setMessage({ type: '', text: '' });
-
-  //   try {
-  //     const response = await axios.post(`http://localhost:3001/api/routes/products/`, formData);
-  //     if (response.status === 201) {
-  //       setMessage({ type: 'success', text: 'Product has been added successfully!' });
-  //       setTimeout(() => navigate("/"), 3000);
-  //     } else {
-  //       setMessage({ type: 'error', text: 'Failed to add a product. Please try again.' });
-  //     }
-  //   } catch (error) {
-  //     console.error('Error adding product:', error);
-  //     setMessage({ type: 'error', text: 'An error occurred while adding the product.' });
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // };
-
-  // const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-  //   const target = e.target as HTMLImageElement;
-  //   target.src = 'data:image/svg+xml;base64,...'; // placeholder
-  // };
+    try {
+      const response = await axios.post(`http://localhost:3001/api/routes/products/`, formData);
+      if (response.status === 201) {
+        setMessage({ type: 'success', text: 'Product has been added successfully!' });
+        setTimeout(() => navigate("/"), 3000);
+      } else {
+        setMessage({ type: 'error', text: 'Failed to add a product. Please try again.' });
+      }
+    } catch (error) {
+      console.error('Error adding product:', error);
+      setMessage({ type: 'error', text: 'An error occurred while adding the product.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const handleReset = () => {
     setFormData({

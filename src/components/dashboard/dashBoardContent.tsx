@@ -1,15 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell
 } from 'recharts';
 import {
-  ShoppingCart, Users, Package, TrendingUp,DollarSign,
+  ShoppingCart, Users, Package, TrendingUp,
   Clock, CheckCircle, XCircle,
 } from 'lucide-react';
 
 const DashBoardContent = () => {
+<<<<<<< Updated upstream
   // Mock data - replace with API calls later
+=======
+  const [orders, setOrders] = useState<any[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
+  const [users, setUsers] = useState<any[]>([]);
+
+  const getdata = async() =>{
+    try {
+      const prodct:any = await axios.get("http://localhost:3001/api/routes/products")
+      const ordr:any =await  axios.get("http://localhost:3001/api/routes/orders")
+      const usr =await  axios.get("http://localhost:3001/api/routes/users")
+      console.log(prodct.data,ordr.data,usr.data)
+      setUsers(usr.data.users)
+      setProducts(prodct.data.products)
+      setOrders(ordr.data.orders)
+    } catch (error) {
+      console.log(error)
+    }
+  } 
+  useEffect(()=>{
+    getdata()
+  },[])
+  
+  
+
+
+
+>>>>>>> Stashed changes
   const mockData = {
     overview: {
       totalProducts: 1250,
@@ -178,6 +206,7 @@ const DashBoardContent = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<<<<<<< Updated upstream
         <StatCard
           title="Total Revenue"
           value={`$${data.overview.totalRevenue.toLocaleString()}`}
@@ -185,7 +214,9 @@ const DashBoardContent = () => {
           trend={data.overview.monthlyGrowth}
           color="#10B981"
         />
+=======
         
+>>>>>>> Stashed changes
         <StatCard
           title="Total Orders"
           value={data.overview.totalOrders.toLocaleString()}

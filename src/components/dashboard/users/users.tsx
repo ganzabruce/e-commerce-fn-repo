@@ -37,7 +37,14 @@ const Userss: React.FC = () => {
     fetchUsers();
   }, []);
 
-  
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  };
 
   const getStatusColor = (status: string): string => {
     const colors: Record<string, string> = {
