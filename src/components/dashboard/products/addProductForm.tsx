@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-interface ProductProps {
+interface FormData {
   name: string;
   price: number;
   description: string;
@@ -11,7 +11,7 @@ interface ProductProps {
 }
 
 const CreateProductForm: React.FC = () => {
-  const [formData, setFormData] = useState<ProductProps>({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     price: 0,
     description: '',

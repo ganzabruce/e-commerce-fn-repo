@@ -17,6 +17,7 @@ interface Product {
   _id: string;
   name: string;
   price: number;
+  
   description?: string;
   imageUrl?: string;
   category?: string;
@@ -126,6 +127,9 @@ const Orders = () => {
   // const getProductName = (productId: string): string => {
   //   return products[productId]?.name || `Product #${productId.slice(-6)}`;
   // };
+
+  // --- Same JSX as before ---
+  // (No changes needed for rendering, since types are enforced above)
 
   // --- Same JSX as before ---
   // (No changes needed for rendering, since types are enforced above)
