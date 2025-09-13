@@ -12,7 +12,7 @@ export const useMenteeSignup = () => {
         setError(null);  
         setIsLoading(true);  
         try {  
-            const response = await fetch('http://localhost:3003/api/user/register', {  
+            const response = await fetch('https://e-commerce-bn-project-a9qh.onrender.com/api/user/register', {  
                 method: "POST",  
                 headers: {  
                     "Content-Type": "application/json",  
